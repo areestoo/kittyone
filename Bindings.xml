@@ -1,0 +1,11 @@
+<Bindings>
+  <Binding name="KittyOne" header="KITTYONE">
+    KittyOne()
+  </Binding>
+  <Binding name="KittyOne Claw">
+    KittyOneClaw()
+  </Binding>
+  <Binding name="KittyOne Vaelestrasz">
+    KittyOneVael()
+  </Binding>
+</Bindings>
