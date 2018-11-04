@@ -8,7 +8,7 @@ KittyOne is an addon to simplify the feral druid DPS rotation to pressing one bu
  - Copy the contents of KittyOne to your World of Warcraft addons folder @ Interface\AddOns.
  - Ensure it is enabled at the character login screen.
  - Bind KittyOne in the keybindings menu.
- - type /ko, /kitty or /kittyone for options 
+ - type /ko, /kitty or /kittyone for options
 
 ### 2. Rotation Priority
 1. Powershift when < 28 energy and < 4 combo points
@@ -28,3 +28,12 @@ KittyOne is an addon to simplify the feral druid DPS rotation to pressing one bu
 | Kitty | One button rotation for shred DPS |
 | KittyClaw | One button rotation modified for claw DPS|
 | KittyVael | One button rotation for Vaelastrasz the Corrupt in Blackwing Lair|
+
+### 5. To do
+ - Customizable mana thresholds to use innervate and potions
+ - Manual Crowd Pummeler in rotation (spam proof)
+ - Manual Crowd equip and destroy after use
+ - **Faerie Fire** application
+ - Innervate queueing when /w'd
+ - Bear form rotation and innervate queueing\
+ - GUI menu
