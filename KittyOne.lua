@@ -82,27 +82,34 @@ end
 
 function RotationClaw()
   local a=GetActiveForm()
+  local c=GetComboPoints()
+  GetAttack()
+
   if a==0 then
     CastShapeshiftForm(3)
   else
-    if UnitMana("player") < 20 then
-      CastShapeshiftForm(a) UseAction(36)
+    if UnitMana("player") < 15 and c>=4 then
+      CastShapeshiftForm(a)
+      UseAction(36)
+    else
+      if UnitMana("player") < 20 and c<4 then
+        CastShapeshiftForm(a)
+        UseAction(36)
+      else
+        local i=0 g=GetPlayerBuff
+        while not (g(i) == -1) do
+          if(strfind(GetPlayerBuffTexture(g(i)),"Spell_Shadow_ManaBurn")) then
+            CastSpellByName("Claw")
+          end
+          i=i+1
+        end
+        if UnitMana("player") < 55 and c>=4 then
+          CastSpellByName("Ferocious Bite")
+        else
+          CastSpellByName("Claw")
+        end
+      end
     end
-  end
-  if GetActiveForm()>0 and not IsCurrentAction(36) then
-    UseAction(36)
-  end
-  local i=0 g=GetPlayerBuff
-  while not (g(i) == -1) do
-    if(strfind(GetPlayerBuffTexture(g(i)),"Spell_Shadow_ManaBurn")) then
-      CastSpellByName("Claw")
-    end
-    i=i+1
-  end
-  if GetComboPoints()>=4 and UnitMana("player") < 55 then
-    CastSpellByName("Ferocious Bite")
-  else
-    CastSpellByName("Claw")
   end
 end
 
