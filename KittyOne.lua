@@ -52,14 +52,6 @@ function Rotation()
   local c=GetComboPoints()
   GetAttack()
 
-  local i=0 g=GetPlayerBuff
-  while not (g(i) == -1) do
-    if(strfind(GetPlayerBuffTexture(g(i)),"Spell_Shadow_ManaBurn")) then
-      CastSpellByName("Shred")
-    end
-    i=i+1
-  end
-
   if a==0 then
     CastShapeshiftForm(3)
   else
@@ -71,6 +63,13 @@ function Rotation()
         CastShapeshiftForm(a)
         UseAction(36)
       else
+        local i=0 g=GetPlayerBuff
+        while not (g(i) == -1) do
+          if(strfind(GetPlayerBuffTexture(g(i)),"Spell_Shadow_ManaBurn")) then
+            CastSpellByName("Shred")
+          end
+          i=i+1
+        end
         if UnitMana("player") < 63 and c>=4 then
           CastSpellByName("Ferocious Bite")
         else
