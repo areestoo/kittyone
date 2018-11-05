@@ -30,7 +30,7 @@ KittyOne is an addon to simplify the feral druid DPS rotation to pressing one bu
 | KittyVael | One button rotation for Vaelastrasz the Corrupt in Blackwing Lair|
 
 ### 5. To do
- - Customizable mana thresholds to use innervate and potions
+ - T.lua library for extended slash command parsing
  - Manual Crowd Pummeler in rotation (spam proof)
  - Manual Crowd equip and destroy after use
  - **Faerie Fire** application

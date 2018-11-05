@@ -8,10 +8,14 @@ local function KittyEventHandler(self, event, ...)
     KP("No presets detected, setting to defaults")
     KittyConsume = false
     KittyInnervate = false
+    ConsumeThreshold = 1000
+    InnervateThreshold = 1200
     KittySet = 1
   end
   KP("Consumables are " .. tostring(KittyConsume))
   KP("Innervate is " .. tostring(KittyInnervate))
+  KP("Mana consumables will be used below "..tostring(ConsumeThreshold).." mana.")
+  KP("Innervate will be used below "..tostring(InnervateThreshold).." mana.")
 end
 frame:SetScript("OnEvent", KittyEventHandler);
 
@@ -19,13 +23,16 @@ SLASH_KITTYONE1 = "/kitty"
 SLASH_KITTYONE2 = "/kittyone"
 SLASH_KITTYONE3 = "/ko"
 SlashCmdList["KITTYONE"] = function(msg)
+  local arg1, arg2 = strsplit(" ",msg)
   if msg == "" then
     KP(" "..version)
+    KP("/help for commands and settings")
+  elseif msg == "help" then
     KP("/kitty consumables <true> or <false> (currently: "..tostring(KittyConsume)..")")
     KP("/kitty innervate <true> or <false> (currently: "..tostring(KittyInnervate)..")")
-  end
-  local arg1, arg2, arg3 = strsplit(" ",msg)
-  if arg1 == "innervate" and arg2 then
+    KP("/kitty consumablesthreshold <value> (currently: "..tostring(ConsumeThreshold)..")")
+    KP("/kitty innervatethreshold <value> (currently: "..tostring(InnervateThreshold)..")")
+  elseif arg1 == "innervate" and arg2 then
     if arg2 == "true" or arg2 == "t"then
       KittyInnervate = true
       KP("Innervate set to " .. tostring(KittyInnervate))
@@ -34,8 +41,7 @@ SlashCmdList["KITTYONE"] = function(msg)
       KittyInnervate = false
       KP("Innervate set to " .. tostring(KittyInnervate))
     end
-  end
-  if arg1=="consumables" and arg2 then
+  elseif arg1=="consumables" and arg2 then
     if arg2 == "true" or arg2 == "t"then
       KittyConsume = true
       KP("Consumables set to " .. tostring(KittyConsume))
@@ -44,6 +50,18 @@ SlashCmdList["KITTYONE"] = function(msg)
       KittyConsume = false
       KP("Consumables set to " .. tostring(KittyConsume))
     end
+  elseif arg1=="innervatethreshold" and arg2 then
+    if tonumber(arg2) then
+      InnervateThreshold = tonumber(arg2)
+      KP("Innervate threshold set to " .. tostring(InnervateThreshold))
+    end
+  elseif arg1=="consumablesthreshold" and arg2 then
+    if tonumber(arg2) then
+      ConsumeThreshold = tonumber(arg2)
+      KP("Consumables threshold set to " .. tostring(ConsumeThreshold))
+    end
+  else
+    KP("Unrecognized or incorrect syntax. Use /kitty help for list of available commands.")
   end
 end
 
@@ -143,13 +161,13 @@ end
 
 function UseInnervate()
   GetMana()
-  if GetActiveForm()==0 and CasterMana<1200 then
+  if GetActiveForm()==0 and CasterMana<InnervateThreshold then
     CastSpellByName("Innervate")
   end
 end
 
 function UseConsumable()
-  if GetActiveForm()==0 and UnitMana("player")<1000 then
+  if GetActiveForm()==0 and UnitMana("player")<ConsumeThreshold then
     if GetItemCooldown("Major Mana Potion")>0 then
       UseItemByName("Demonic Rune")
     else

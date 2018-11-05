@@ -3,5 +3,5 @@
 ## Version: 0.1
 ## Notes: Addon for one button rotation feral DPS
 ## Author: Areesto
-## SavedVariablesPerCharacter: KittyConsume, KittyInnervate, KittySet
+## SavedVariablesPerCharacter: KittyConsume, KittyInnervate, KittySet, InnervateThreshold, ConsumeThreshold
 KittyOne.lua
