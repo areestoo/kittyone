@@ -1,9 +1,9 @@
 BINDING_HEADER_KITTYONE = "KittyOne v0.2"
-version = "v0.2 by Areesto - https://gitlab.com/areesto"
+version = "v0.2 by Areesto"
 local frame = CreateFrame("FRAME", "KittyFrame");
 frame:RegisterEvent("PLAYER_ENTERING_WORLD");
 local function KittyEventHandler(self, event, ...)
-  KP(version.." loaded! /kitty for options");
+  KP(version.." loaded! /kitty for options - https://gitlab.com/areesto");
   if not KittySet then
     KP("No presets detected, setting to defaults")
     KittyConsume = false
@@ -114,12 +114,13 @@ function RotationClaw()
 end
 
 function GetAttack()
-  if not GetActiveForm()==0 then
+  currentForm = GetActiveForm()
+  if currentForm>0 then
     if not IsCurrentAction(36) then
       UseAction(36)
     end
   else
-    if IsCurrentAction(36) then
+    if currentForm ==0 and IsCurrentAction(36) then
       UseAction(36)
     end
   end
