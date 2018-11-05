@@ -1,9 +1,9 @@
 BINDING_HEADER_KITTYONE = "KittyOne v0.2"
-version = "|cffffffffv0.2 by |cffffb200 Areesto"
+version = "|cffffffffv0.2 by |cff4c8affAreesto"
 local frame = CreateFrame("FRAME", "KittyFrame");
 frame:RegisterEvent("PLAYER_ENTERING_WORLD");
 local function KittyEventHandler(self, event, ...)
-  KP(version.."|cffffffff loaded! /kitty for options - |cffffffff https://gitlab.com/areesto");
+  KP(version.."|cffffffff loaded! /kitty for options - |cff4c8aff https://gitlab.com/areesto");
   if not KittySet then
     KP("No presets detected, setting to defaults")
     KittyConsume = false
@@ -25,17 +25,17 @@ SlashCmdList["KITTYONE"] = function(msg)
     KP("/kitty help for commands, /kitty info for current settings.")
   elseif msg == "info" then
     KP(version)
-    KP("Consumables are |cff0254f9" .. tostring(KittyConsume))
-    KP("Innervate is |cff0254f9" .. tostring(KittyInnervate))
-    KP("Mana consumables will be used below |cff0254f9"..tostring(ConsumeThreshold).." mana.")
-    KP("Innervate will be used below |cff0254f9"..tostring(InnervateThreshold).." mana.")
-    KP("Attack Actionbar ID is set to |cff0254f9"..AttackID)
+    KP("Consumables are |cffffb200" .. tostring(KittyConsume))
+    KP("Innervate is |cffffb200" .. tostring(KittyInnervate))
+    KP("Mana consumables will be used below |cffffb200"..tostring(ConsumeThreshold).." mana.")
+    KP("Innervate will be used below |cffffb200"..tostring(InnervateThreshold).." mana.")
+    KP("Attack Actionbar ID is set to |cffffb200"..AttackID)
   elseif msg == "help" then
-    KP("/kitty consumables <true> or <false> |cffffffff(currently: "..tostring(KittyConsume)..")")
-    KP("/kitty innervate <true> or <false> |cffffffff(currently: "..tostring(KittyInnervate)..")")
-    KP("/kitty consumablesthreshold <value> |cffffffff(currently: "..tostring(ConsumeThreshold)..")")
-    KP("/kitty innervatethreshold <value> |cffffffff(currently: "..tostring(InnervateThreshold)..")")
-    KP("/kitty attackid <value> |cffffffff(currently:"..tostring(AttackID)..")")
+    KP("/kitty consumables <true> or <false> |cffffb200(currently: "..tostring(KittyConsume)..")")
+    KP("/kitty innervate <true> or <false> |cffffb200(currently: "..tostring(KittyInnervate)..")")
+    KP("/kitty consumablesthreshold <value> |cffffb200(currently: "..tostring(ConsumeThreshold)..")")
+    KP("/kitty innervatethreshold <value> |cffffb200(currently: "..tostring(InnervateThreshold)..")")
+    KP("/kitty attackid <value> |cffffb200(currently:"..tostring(AttackID)..")")
   elseif arg1 == "innervate" and arg2 then
     if arg2 == "true" or arg2 == "t"then
       KittyInnervate = true
@@ -219,5 +219,5 @@ function KittyOneVael()
 end
 
 function KP(input_str)
-  DEFAULT_CHAT_FRAME:AddMessage("KittyOne: "..input_str,244/255,209/255,66/255)
+  DEFAULT_CHAT_FRAME:AddMessage("|cffffb200KittyOne: |cffffffff"..input_str)
 end
