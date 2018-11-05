@@ -12,19 +12,19 @@ KittyOne is an addon to simplify the feral druid DPS rotation to pressing one bu
  - make sure to set /kitty attackid and drag the attack spell onto your action bars somewhere! This is very important for toggling off autoattack in caster form (long swing timer cooldown).
 
 ### 2. Rotation Priority
-1. Powershift when < 28 energy and < 4 combo points
-2. Powershift when < 15 energy and >= 4 combo points
-3. Cast **Shred** if clearcasting proc
-4. Cast **Ferocious Bite** if < 63 energy and >= 4 combo points
-5. Cast **Shred** otherwise
+1. Powershift when < 28 energy and < 4 combo points.
+2. Powershift when < 15 energy and >= 4 combo points.
+3. Cast **Shred** if clearcasting proc.
+4. Cast **Ferocious Bite** if < 63 energy and >= 4 combo points.
+5. Cast **Shred** otherwise.
 
 ### 3. Options
-- **/kitty** to check current settings
-- **/kitty innervate** if set to true will auto cast innervate when under **\<innervatethreshold>** mana
-- **/kitty innervatethreshold \<value>** will set value for innervate auto cast
-- **/kitty consumables** if set to true will auto use raid consumables when under **\<consumethreshold>** mana
-- **/kitty innervatethreshold \<value>** will set value for raid consumables auto use
-- **/kitty attackid \<value>** - set it to the actionbar ID value of your attack spell. (Default 1)
+- **/kitty** to check current settings.
+- **/kitty innervate** if set to true will auto cast innervate when under **\<innervatethreshold>** mana.
+- **/kitty innervatethreshold \<value>** will set value for innervate auto cast.
+- **/kitty consumables** if set to true will auto use raid consumables when under **\<consumethreshold>** mana.
+- **/kitty innervatethreshold \<value>** will set value for raid consumables auto use.
+- **/kitty attackid \<value>** - set it to the actionbar ID value of your attack spell (default is 1).
 
 ### 4. Bindings
 | Binding Name | Description |
