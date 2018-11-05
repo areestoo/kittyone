@@ -10,12 +10,9 @@ local function KittyEventHandler(self, event, ...)
     KittyInnervate = false
     ConsumeThreshold = 1000
     InnervateThreshold = 1200
+    AttackID = 1
     KittySet = 1
   end
-  KP("Consumables are " .. tostring(KittyConsume))
-  KP("Innervate is " .. tostring(KittyInnervate))
-  KP("Mana consumables will be used below "..tostring(ConsumeThreshold).." mana.")
-  KP("Innervate will be used below "..tostring(InnervateThreshold).." mana.")
 end
 frame:SetScript("OnEvent", KittyEventHandler);
 
@@ -25,13 +22,20 @@ SLASH_KITTYONE3 = "/ko"
 SlashCmdList["KITTYONE"] = function(msg)
   local arg1, arg2 = strsplit(" ",msg)
   if msg == "" then
-    KP(" "..version)
-    KP("/help for commands and settings")
+    KP("/kitty help for commands, /kitty info for current settings.")
+  elseif msg == "info" then
+    KP(version)
+    KP("Consumables are " .. tostring(KittyConsume))
+    KP("Innervate is " .. tostring(KittyInnervate))
+    KP("Mana consumables will be used below "..tostring(ConsumeThreshold).." mana.")
+    KP("Innervate will be used below "..tostring(InnervateThreshold).." mana.")
+    KP("Attack Actionbar ID is set to "..AttackID)
   elseif msg == "help" then
     KP("/kitty consumables <true> or <false> (currently: "..tostring(KittyConsume)..")")
     KP("/kitty innervate <true> or <false> (currently: "..tostring(KittyInnervate)..")")
     KP("/kitty consumablesthreshold <value> (currently: "..tostring(ConsumeThreshold)..")")
     KP("/kitty innervatethreshold <value> (currently: "..tostring(InnervateThreshold)..")")
+    KP("/kitty attackid <value> (currently:"..tostring(AttackID)..")")
   elseif arg1 == "innervate" and arg2 then
     if arg2 == "true" or arg2 == "t"then
       KittyInnervate = true
@@ -59,6 +63,11 @@ SlashCmdList["KITTYONE"] = function(msg)
     if tonumber(arg2) then
       ConsumeThreshold = tonumber(arg2)
       KP("Consumables threshold set to " .. tostring(ConsumeThreshold))
+    end
+  elseif arg1=="attackid" and arg2 then
+    if tonumber(arg2) then
+      AttackID = tonumber(arg2)
+      KP("Attack Actionbar ID set to " .. tostring(AttackID))
     end
   else
     KP("Unrecognized or incorrect syntax. Use /kitty help for list of available commands.")
@@ -134,12 +143,12 @@ end
 function GetAttack()
   currentForm = GetActiveForm()
   if currentForm>0 then
-    if not IsCurrentAction(36) then
-      UseAction(36)
+    if not IsCurrentAction(AttackID) then
+      UseAction(AttackID)
     end
   else
-    if currentForm ==0 and IsCurrentAction(36) then
-      UseAction(36)
+    if currentForm ==0 and IsCurrentAction(AttackID) then
+      UseAction(AttackID)
     end
   end
 end
