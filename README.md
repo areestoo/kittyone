@@ -9,6 +9,7 @@ KittyOne is an addon to simplify the feral druid DPS rotation to pressing one bu
  - Ensure it is enabled at the character login screen.
  - Bind KittyOne in the keybindings menu.
  - type /ko, /kitty or /kittyone for options
+ - make sure to set /kitty attackid and drag the attack spell onto your action bars somewhere! This is very important for toggling off autoattack in caster form (long swing timer cooldown).
 
 ### 2. Rotation Priority
 1. Powershift when < 28 energy and < 4 combo points
@@ -23,7 +24,7 @@ KittyOne is an addon to simplify the feral druid DPS rotation to pressing one bu
 - **/kitty innervatethreshold \<value>** will set value for innervate auto cast
 - **/kitty consumables** if set to true will auto use raid consumables when under **\<consumethreshold>** mana
 - **/kitty innervatethreshold \<value>** will set value for raid consumables auto use
-- **/kitty attackid**
+- **/kitty attackid \<value>** - set it to the actionbar ID value of your attack spell. (Default 1)
 
 ### 4. Bindings
 | Binding Name | Description |
