@@ -3,7 +3,7 @@ version = "|cffffffffv0.2 by |cff4c8affAreesto"
 local frame = CreateFrame("FRAME", "KittyFrame");
 frame:RegisterEvent("PLAYER_ENTERING_WORLD");
 local function KittyEventHandler(self, event, ...)
-  KP(version.."|cffffffff loaded! /kitty for options - |cff4c8aff https://gitlab.com/areesto");
+  KP(version.."|cffffffff loaded! |cffffb200/kitty |cfffffffffor options - |cff4c8aff https://gitlab.com/areesto");
   if not KittySet then
     KP("No presets detected, setting to defaults")
     KittyConsume = false
@@ -27,15 +27,15 @@ SlashCmdList["KITTYONE"] = function(msg)
     KP(version)
     KP("Consumables are |cffffb200" .. tostring(KittyConsume))
     KP("Innervate is |cffffb200" .. tostring(KittyInnervate))
-    KP("Mana consumables will be used below |cffffb200"..tostring(ConsumeThreshold).." mana.")
-    KP("Innervate will be used below |cffffb200"..tostring(InnervateThreshold).." mana.")
+    KP("Mana consumables will be used below |cffffb200"..tostring(ConsumeThreshold).."|cffffffff mana.")
+    KP("Innervate will be used below |cffffb200"..tostring(InnervateThreshold).."|cffffffff mana.")
     KP("Attack Actionbar ID is set to |cffffb200"..AttackID)
   elseif msg == "help" then
-    KP("/kitty consumables <true> or <false> |cffffb200(currently: "..tostring(KittyConsume)..")")
-    KP("/kitty innervate <true> or <false> |cffffb200(currently: "..tostring(KittyInnervate)..")")
-    KP("/kitty consumablesthreshold <value> |cffffb200(currently: "..tostring(ConsumeThreshold)..")")
-    KP("/kitty innervatethreshold <value> |cffffb200(currently: "..tostring(InnervateThreshold)..")")
-    KP("/kitty attackid <value> |cffffb200(currently:"..tostring(AttackID)..")")
+    KP("/kitty consumables <true> or <false> (|cffffb200"..tostring(KittyConsume).."|cffffffff)")
+    KP("/kitty innervate <true> or <false> (|cffffb200"..tostring(KittyInnervate).."|cffffffff)")
+    KP("/kitty consumablesthreshold <value> (|cffffb200"..tostring(ConsumeThreshold).."|cffffffff)")
+    KP("/kitty innervatethreshold <value> (|cffffb200"..tostring(InnervateThreshold).."|cffffffff)")
+    KP("/kitty attackid <value> (|cffffb200"..tostring(AttackID).."|cffffffff)")
   elseif arg1 == "innervate" and arg2 then
     if arg2 == "true" or arg2 == "t"then
       KittyInnervate = true
@@ -78,7 +78,7 @@ function Rotation()
   local a=GetActiveForm()
   local c=GetComboPoints()
   GetAttack()
-
+  GetFaerieFire()
   if a==0 then
     CastShapeshiftForm(3)
   else
@@ -150,6 +150,23 @@ function GetAttack()
     if currentForm ==0 and IsCurrentAction(AttackID) then
       UseAction(AttackID)
     end
+  end
+end
+
+function GetFaerieFire()
+  local buffFound = false
+  for i=1,16 do
+    local name=UnitDebuff("target",i)
+    if name then
+      buffThrowaway,buffName = strsplit("Spell_",name)
+      if buffName=="Nature_FaerieFire" then
+        buffFound = true
+        break
+      end
+    end
+  end
+  if buffFound == false then
+    CastSpellByName("Faerie Fire (Feral)()")
   end
 end
 
