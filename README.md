@@ -37,7 +37,6 @@ KittyOne is an addon to simplify the feral druid DPS rotation to pressing one bu
  - T.lua library for extended slash command parsing
  - Manual Crowd Pummeler in rotation (spam proof)
  - Manual Crowd equip and destroy after use
- - **Faerie Fire** application
  - Innervate queueing when /w'd
  - Bear form rotation and innervate queueing\
  - GUI menu
