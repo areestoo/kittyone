@@ -167,7 +167,7 @@ end
 function GetFaerieFire()
   if KittyFF then
     local buffFound = false
-    for i=1,16 do
+    for i=1,8 do
       local name=UnitDebuff("target",i)
       if name then
         buffThrowaway,buffName = strsplit("Spell_",name)
