@@ -30,12 +30,23 @@ SlashCmdList["KITTYONE"] = function(msg)
     KP("Mana consumables will be used below |cffffb200"..tostring(ConsumeThreshold).."|cffffffff mana.")
     KP("Innervate will be used below |cffffb200"..tostring(InnervateThreshold).."|cffffffff mana.")
     KP("Attack Actionbar ID is set to |cffffb200"..AttackID)
+    KP("Automatic Faerie Fire application set to |cffffb200".. tostring(KittyFF))
   elseif msg == "help" then
     KP("/kitty consumables <true> or <false> (|cffffb200"..tostring(KittyConsume).."|cffffffff)")
     KP("/kitty innervate <true> or <false> (|cffffb200"..tostring(KittyInnervate).."|cffffffff)")
     KP("/kitty consumablesthreshold <value> (|cffffb200"..tostring(ConsumeThreshold).."|cffffffff)")
     KP("/kitty innervatethreshold <value> (|cffffb200"..tostring(InnervateThreshold).."|cffffffff)")
     KP("/kitty attackid <value> (|cffffb200"..tostring(AttackID).."|cffffffff)")
+    KP("/kitty faeriefire <true> or <false> (|cffffb200"..tostring(KittyFF).."|cffffffff)")
+  elseif arg1 == "faeriefire" and arg2 or arg1 =="ff" and arg2 then
+    if arg2 == "true" or arg2 == "t"then
+      KittyFF = true
+      KP("Auto Faerie Fire set to " .. tostring(KittyFF))
+    end
+    if arg2 == "false" or arg2 == "f" then
+      KittyFF = false
+      KP("Auto Faerie Fire set to " .. tostring(KittyFF))
+    end
   elseif arg1 == "innervate" and arg2 then
     if arg2 == "true" or arg2 == "t"then
       KittyInnervate = true
@@ -154,19 +165,21 @@ function GetAttack()
 end
 
 function GetFaerieFire()
-  local buffFound = false
-  for i=1,16 do
-    local name=UnitDebuff("target",i)
-    if name then
-      buffThrowaway,buffName = strsplit("Spell_",name)
-      if buffName=="Nature_FaerieFire" then
-        buffFound = true
-        break
+  if KittyFF then
+    local buffFound = false
+    for i=1,16 do
+      local name=UnitDebuff("target",i)
+      if name then
+        buffThrowaway,buffName = strsplit("Spell_",name)
+        if buffName=="Nature_FaerieFire" then
+          buffFound = true
+          break
+        end
       end
     end
-  end
-  if buffFound == false then
-    CastSpellByName("Faerie Fire (Feral)()")
+    if buffFound == false then
+      CastSpellByName("Faerie Fire (Feral)()")
+    end
   end
 end
 
