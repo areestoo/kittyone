@@ -18,12 +18,16 @@ KittyOne is an addon to simplify the feral druid DPS rotation to pressing one bu
 4. Cast **Ferocious Bite** if < 63 energy and >= 4 combo points.
 5. Cast **Shred** otherwise.
 
+### 3. Consumables Priority
+1. Use major mana potion under threshold
+2. Use dark rune under threshold
+
 ### 3. Options
 - **/kitty** to check current settings.
-- **/kitty innervate** if set to true will auto cast innervate when under **\<innervatethreshold>** mana.
-- **/kitty innervatethreshold \<value>** will set value for innervate auto cast.
-- **/kitty consumables** if set to true will auto use raid consumables when under **\<consumethreshold>** mana.
-- **/kitty innervatethreshold \<value>** will set value for raid consumables auto use.
+- **/kitty i ** if set to true will auto cast innervate when under **\<innervatethreshold>** mana.
+- **/kitty it \<value>** will set value for innervate auto cast.
+- **/kitty c** if set to true will auto use raid consumables when under **\<consumethreshold>** mana.
+- **/kitty ct \<value>** will set value for raid consumables auto use.
 - **/kitty attackid \<value>** - set it to the actionbar ID value of your attack spell (default is 1).
 
 ### 4. Bindings
@@ -40,3 +44,4 @@ KittyOne is an addon to simplify the feral druid DPS rotation to pressing one bu
  - Innervate queueing when /w'd
  - Bear form rotation and innervate queueing\
  - GUI menu
+ - Separate addon for consumable management

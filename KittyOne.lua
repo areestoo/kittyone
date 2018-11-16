@@ -47,7 +47,7 @@ SlashCmdList["KITTYONE"] = function(msg)
       KittyFF = false
       KP("Auto Faerie Fire set to " .. tostring(KittyFF))
     end
-  elseif arg1 == "innervate" and arg2 then
+  elseif (arg1 == "innervate" and arg2) or (arg1=="i" and arg2) then
     if arg2 == "true" or arg2 == "t"then
       KittyInnervate = true
       KP("Innervate set to " .. tostring(KittyInnervate))
@@ -56,7 +56,7 @@ SlashCmdList["KITTYONE"] = function(msg)
       KittyInnervate = false
       KP("Innervate set to " .. tostring(KittyInnervate))
     end
-  elseif arg1=="consumables" and arg2 then
+  elseif (arg1=="consumables" and arg2) or (arg1=="c" and arg2) then
     if arg2 == "true" or arg2 == "t"then
       KittyConsume = true
       KP("Consumables set to " .. tostring(KittyConsume))
@@ -65,12 +65,12 @@ SlashCmdList["KITTYONE"] = function(msg)
       KittyConsume = false
       KP("Consumables set to " .. tostring(KittyConsume))
     end
-  elseif arg1=="innervatethreshold" and arg2 then
+  elseif a(rg1=="innervatethreshold" and arg2) or (arg1=="it" and arg2) then
     if tonumber(arg2) then
       InnervateThreshold = tonumber(arg2)
       KP("Innervate threshold set to " .. tostring(InnervateThreshold))
     end
-  elseif arg1=="consumablesthreshold" and arg2 then
+  elseif (arg1=="consumablesthreshold" and arg2) or (arg1=="ct" and arg2) then
     if tonumber(arg2) then
       ConsumeThreshold = tonumber(arg2)
       KP("Consumables threshold set to " .. tostring(ConsumeThreshold))
