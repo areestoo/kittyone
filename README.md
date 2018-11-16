@@ -24,7 +24,7 @@ KittyOne is an addon to simplify the feral druid DPS rotation to pressing one bu
 
 ### 3. Options
 - **/kitty** to check current settings.
-- **/kitty i ** if set to true will auto cast innervate when under **\<innervatethreshold>** mana.
+- **/kitty i** if set to true will auto cast innervate when under **\<innervatethreshold>** mana.
 - **/kitty it \<value>** will set value for innervate auto cast.
 - **/kitty c** if set to true will auto use raid consumables when under **\<consumethreshold>** mana.
 - **/kitty ct \<value>** will set value for raid consumables auto use.
