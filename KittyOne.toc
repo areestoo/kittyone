@@ -1,7 +1,8 @@
 ## Interface: 11200
 ## Title: KittyOne
-## Version: 0.1
+## Version: 0.2
 ## Notes: Addon for one button rotation feral DPS
 ## Author: Areesto
 ## SavedVariablesPerCharacter: KittyConsume, KittyInnervate, KittySet, InnervateThreshold, ConsumeThreshold, AttackID, KittyFF
+KittyOne.xml
 KittyOne.lua

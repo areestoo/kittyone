@@ -3,16 +3,6 @@ version = "|cffffffffv0.2 by |cff4c8affAreesto"
 local frame = CreateFrame("FRAME", "KittyFrame");
 frame:RegisterEvent("PLAYER_ENTERING_WORLD");
 local function KittyEventHandler(self, event, ...)
-  KP(version.."|cffffffff loaded! |cffffb200/kitty |cfffffffffor options - |cff4c8aff https://gitlab.com/areesto");
-  if not KittySet then
-    KP("No presets detected, setting to defaults")
-    KittyConsume = false
-    KittyInnervate = false
-    ConsumeThreshold = 1000
-    InnervateThreshold = 1200
-    AttackID = 1
-    KittySet = 1
-  end
 end
 frame:SetScript("OnEvent", KittyEventHandler);
 
@@ -82,6 +72,19 @@ SlashCmdList["KITTYONE"] = function(msg)
     end
   else
     KP("Unrecognized or incorrect syntax. Use /kitty help for list of available commands.")
+  end
+end
+
+function KittyOneOnLoad()
+  KP(version.."|cffffffff loaded! |cffffb200/kitty |cfffffffffor options - |cff4c8aff https://gitlab.com/areesto");
+  if not KittySet then
+    KP("No presets detected, setting to defaults")
+    KittyConsume = false
+    KittyInnervate = false
+    ConsumeThreshold = 1000
+    InnervateThreshold = 1200
+    AttackID = 1
+    KittySet = 1
   end
 end
 
